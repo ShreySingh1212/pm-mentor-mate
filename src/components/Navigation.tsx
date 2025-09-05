@@ -11,7 +11,7 @@ const Navigation = () => {
               <span className="text-primary-foreground font-bold text-sm">AI</span>
             </div>
             <div>
-              <h1 className="font-bold text-lg">InternshipAI</h1>
+              <h1 className="font-bold text-lg">InternHub</h1>
               <p className="text-xs text-muted-foreground">PM Internship Scheme</p>
             </div>
           </div>
