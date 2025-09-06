@@ -1,0 +1,16 @@
+const natural = require('natural');
+
+// Simple content-based matching
+function recommendInternships(user, internships, topK = 5) {
+  const userProfile = (user.skills || []).join(' ') + ' ' + (user.interests || []).join(' ');
+  const tokenizer = new natural.WordTokenizer();
+  const userTokens = tokenizer.tokenize(userProfile.toLowerCase());
+
+  const scored = internships.map(i => {
+    const text = (i.title + ' ' + i.description + ' ' + (i.domain_tags || []).join(' ')).toLowerCase();
+    const score = userTokens.filter(t => text.includes(t)).length;
+    return { ...i, score };
+  });
+
+  return scored.sort((a, b) => b.score - a.score).slice(0, topK);
+}
